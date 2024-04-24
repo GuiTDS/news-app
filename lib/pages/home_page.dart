@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:inews/components/main_infos.dart';
+import 'package:inews/components/news_card.dart';
+import 'package:inews/models/news_model.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  int selectedIndex = 0;
+  String selectedNewsCategory = newsTypes[0];
 
-  changeIndex(int index) {
+  changeCategory(String category) {
     setState(() {
-      selectedIndex = index;
+      selectedNewsCategory = category;
     });
   }
 
@@ -30,7 +32,7 @@ class _HomePageState extends State<HomePage> {
               expandedHeight: size.height * imageProportion,
               floating: false,
               pinned: true,
-              backgroundColor: Colors.blueGrey[200],
+              backgroundColor: Colors.blueGrey,
               title: const Text(
                 'inews',
                 style: TextStyle(
@@ -89,13 +91,20 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.only(bottom: 10),
               child: Row(
                 children: newsTypes.map((type) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
-                    child: Text(
-                      type,
-                      style:
-                          const TextStyle(fontSize: 14, color: Colors.black87),
+                  return InkWell(
+                    onTap: () => changeCategory(type),
+                    child: Padding(
+                      padding:
+                          const EdgeInsets.only(left: 20, right: 20, top: 10),
+                      child: Text(
+                        type,
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black87,
+                            fontWeight: selectedNewsCategory == type
+                                ? FontWeight.bold
+                                : FontWeight.normal),
+                      ),
                     ),
                   );
                 }).toList(),
@@ -105,14 +114,15 @@ class _HomePageState extends State<HomePage> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: ListView.separated(
-                  itemBuilder: (context, index) => const Text('test'),
+                  itemBuilder: (context, index) =>
+                      NewsCard(news: newsItems[index]),
                   separatorBuilder: (context, index) => const SizedBox(
                     height: 20,
                   ),
-                  itemCount: 50,
+                  itemCount: newsItems.length,
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -128,4 +138,70 @@ List<String> newsTypes = [
   'Food',
   'House',
   'Travel'
+];
+
+List<NewsModel> newsItems = [
+  const NewsModel(
+    authorName: 'Alexandra',
+    newsTitle:
+        '5 things to know for April 23: Trump trial, Gaza, Ukraine, Health care privacy, Dubai floods',
+    newsImageURL:
+        'https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/Reuters_Direct_Media/BrazilOnlineReportWorldNews/tagreuters.com2024binary_LYNXNPEK1R0SA-FILEDIMAGE-e1709163448930.jpg?w=1220&h=674&crop=1',
+  ),
+  const NewsModel(
+    authorName: 'Alexandra',
+    newsTitle:
+        '5 things to know for April 23: Trump trial, Gaza, Ukraine, Health care privacy, Dubai floods',
+    newsImageURL:
+        'https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/Reuters_Direct_Media/BrazilOnlineReportWorldNews/tagreuters.com2024binary_LYNXNPEK1R0SA-FILEDIMAGE-e1709163448930.jpg?w=1220&h=674&crop=1',
+  ),
+  const NewsModel(
+    authorName: 'Alexandra',
+    newsTitle:
+        '5 things to know for April 23: Trump trial, Gaza, Ukraine, Health care privacy, Dubai floods',
+    newsImageURL:
+        'https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/Reuters_Direct_Media/BrazilOnlineReportWorldNews/tagreuters.com2024binary_LYNXNPEK1R0SA-FILEDIMAGE-e1709163448930.jpg?w=1220&h=674&crop=1',
+  ),
+  const NewsModel(
+    authorName: 'Alexandra',
+    newsTitle:
+        '5 things to know for April 23: Trump trial, Gaza, Ukraine, Health care privacy, Dubai floods',
+    newsImageURL:
+        'https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/Reuters_Direct_Media/BrazilOnlineReportWorldNews/tagreuters.com2024binary_LYNXNPEK1R0SA-FILEDIMAGE-e1709163448930.jpg?w=1220&h=674&crop=1',
+  ),
+  const NewsModel(
+    authorName: 'Alexandra',
+    newsTitle:
+        '5 things to know for April 23: Trump trial, Gaza, Ukraine, Health care privacy, Dubai floods',
+    newsImageURL:
+        'https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/Reuters_Direct_Media/BrazilOnlineReportWorldNews/tagreuters.com2024binary_LYNXNPEK1R0SA-FILEDIMAGE-e1709163448930.jpg?w=1220&h=674&crop=1',
+  ),
+  const NewsModel(
+    authorName: 'Alexandra',
+    newsTitle:
+        '5 things to know for April 23: Trump trial, Gaza, Ukraine, Health care privacy, Dubai floods',
+    newsImageURL:
+        'https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/Reuters_Direct_Media/BrazilOnlineReportWorldNews/tagreuters.com2024binary_LYNXNPEK1R0SA-FILEDIMAGE-e1709163448930.jpg?w=1220&h=674&crop=1',
+  ),
+  const NewsModel(
+    authorName: 'Alexandra',
+    newsTitle:
+        '5 things to know for April 23: Trump trial, Gaza, Ukraine, Health care privacy, Dubai floods',
+    newsImageURL:
+        'https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/Reuters_Direct_Media/BrazilOnlineReportWorldNews/tagreuters.com2024binary_LYNXNPEK1R0SA-FILEDIMAGE-e1709163448930.jpg?w=1220&h=674&crop=1',
+  ),
+  const NewsModel(
+    authorName: 'Alexandra',
+    newsTitle:
+        '5 things to know for April 23: Trump trial, Gaza, Ukraine, Health care privacy, Dubai floods',
+    newsImageURL:
+        'https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/Reuters_Direct_Media/BrazilOnlineReportWorldNews/tagreuters.com2024binary_LYNXNPEK1R0SA-FILEDIMAGE-e1709163448930.jpg?w=1220&h=674&crop=1',
+  ),
+  const NewsModel(
+    authorName: 'Alexandra',
+    newsTitle:
+        '5 things to know for April 23: Trump trial, Gaza, Ukraine, Health care privacy, Dubai floods',
+    newsImageURL:
+        'https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/Reuters_Direct_Media/BrazilOnlineReportWorldNews/tagreuters.com2024binary_LYNXNPEK1R0SA-FILEDIMAGE-e1709163448930.jpg?w=1220&h=674&crop=1',
+  ),
 ];
