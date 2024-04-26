@@ -4,7 +4,7 @@ import 'package:inews/pages/news_details_page.dart';
 
 class NewsCard extends StatefulWidget {
   final NewsModel news;
-  const NewsCard({super.key, required this.news});
+  const NewsCard({Key? key, required this.news}) : super(key: key);
 
   @override
   State<NewsCard> createState() => _NewsCardState();
@@ -17,7 +17,7 @@ class _NewsCardState extends State<NewsCard> {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const NewsDetailsPage(),
+          builder: (context) => NewsDetailsPage(news: widget.news),
         ),
       ),
       child: Column(
@@ -28,7 +28,12 @@ class _NewsCardState extends State<NewsCard> {
               const SizedBox(
                 width: 10,
               ),
-              Text(widget.news.authorName),
+              Text(
+                widget.news.authorName,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ],
           ),
           const SizedBox(
@@ -44,6 +49,7 @@ class _NewsCardState extends State<NewsCard> {
                   overflow: TextOverflow.clip,
                   style: const TextStyle(
                     fontSize: 16,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -51,10 +57,19 @@ class _NewsCardState extends State<NewsCard> {
                 width: 60,
               ),
               SizedBox(
-                  height: 80,
-                  width: 80,
-                  child: Image.network(widget.news.newsImageURL,
-                      fit: BoxFit.cover)),
+                height: 80,
+                width: 80,
+                child: Image.network(
+                  widget.news.newsImageURL,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      color: Colors.grey,
+                      child: const Icon(Icons.error),
+                    );
+                  },
+                ),
+              ),
             ],
           )
         ],
