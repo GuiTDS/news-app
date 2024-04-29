@@ -17,8 +17,16 @@ class _MainPageState extends State<MainPage> {
   changeIndex(int index) {
     setState(() {
       _selectedIndex = index;
-      _pageController.animateToPage(index,
-          duration: const Duration(milliseconds: 400), curve: Curves.ease);
+      if (index != 1) {
+        _pageController.animateToPage(index,
+            duration: const Duration(milliseconds: 400), curve: Curves.ease);
+      } else {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const SearchPage(),
+            ));
+      }
     });
   }
 
