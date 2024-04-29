@@ -10,7 +10,7 @@ class NewsDetailsPage extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     double appBarIconsHorizPadding = 10;
     Color appBarIconsColor = Colors.white;
-    double newsTitleSpace = news.newsTitle.length >= 65 ? 0.25 : 0.3;
+    double newsTitleSpace = news.newsTitle.length >= 90 ? 0.25 : 0.3;
     double textHorizontalPadding = 15;
     return Scaffold(
       body: NestedScrollView(
@@ -55,8 +55,8 @@ class NewsDetailsPage extends StatelessWidget {
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.90,
                                 child: Padding(
-                                  padding: const EdgeInsets.only(
-                                    left: 0,
+                                  padding: EdgeInsets.only(
+                                    left: textHorizontalPadding,
                                   ),
                                   child: Text(
                                     news.newsTitle,

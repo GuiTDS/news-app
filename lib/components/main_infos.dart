@@ -21,7 +21,7 @@ class MainInfos extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
-                      'Journal name',
+                      'Journal America',
                       style: TextStyle(color: mainColor),
                     ),
                   ),
@@ -33,7 +33,7 @@ class MainInfos extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
-                      'News theme',
+                      'Health',
                       style: TextStyle(color: mainColor),
                     ),
                   ),

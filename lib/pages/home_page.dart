@@ -108,14 +108,17 @@ class _HomePageState extends State<HomePage> {
                     child: Padding(
                       padding:
                           const EdgeInsets.only(left: 20, right: 20, top: 10),
-                      child: Text(
-                        typeName,
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.black87,
-                            fontWeight: selectedNewsCategory == type
-                                ? FontWeight.bold
-                                : FontWeight.normal),
+                      child: Container(
+                        // color: Colors.blueGrey[200],
+                        child: Text(
+                          typeName,
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black87,
+                              fontWeight: selectedNewsCategory == type
+                                  ? FontWeight.bold
+                                  : FontWeight.normal),
+                        ),
                       ),
                     ),
                   );
@@ -124,7 +127,11 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                  bottom: 10,
+                ),
                 child: ListView.separated(
                   itemBuilder: (context, index) =>
                       NewsCard(news: actualNewsList[index]),

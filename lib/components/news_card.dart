@@ -2,22 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:inews/models/news_model.dart';
 import 'package:inews/pages/news_details_page.dart';
 
-class NewsCard extends StatefulWidget {
+class NewsCard extends StatelessWidget {
   final NewsModel news;
   const NewsCard({Key? key, required this.news}) : super(key: key);
 
   @override
-  State<NewsCard> createState() => _NewsCardState();
-}
-
-class _NewsCardState extends State<NewsCard> {
-  @override
   Widget build(BuildContext context) {
+    String categoryName = news.newsCategory.toString().split('.').last;
+    categoryName = categoryName[0].toUpperCase() + categoryName.substring(1);
     return InkWell(
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => NewsDetailsPage(news: widget.news),
+          builder: (context) => NewsDetailsPage(news: news),
         ),
       ),
       child: Column(
@@ -29,7 +26,7 @@ class _NewsCardState extends State<NewsCard> {
                 width: 10,
               ),
               Text(
-                widget.news.authorName,
+                news.authorName,
                 style: const TextStyle(
                   fontWeight: FontWeight.w500,
                 ),
@@ -45,7 +42,7 @@ class _NewsCardState extends State<NewsCard> {
             children: [
               Flexible(
                 child: Text(
-                  widget.news.newsTitle,
+                  news.newsTitle,
                   overflow: TextOverflow.clip,
                   style: const TextStyle(
                     fontSize: 16,
@@ -60,7 +57,7 @@ class _NewsCardState extends State<NewsCard> {
                 height: 80,
                 width: 80,
                 child: Image.network(
-                  widget.news.newsImageURL,
+                  news.newsImageURL,
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
                     return Container(
@@ -68,6 +65,39 @@ class _NewsCardState extends State<NewsCard> {
                       child: const Icon(Icons.error),
                     );
                   },
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          Row(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.blueGrey[50],
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 2,
+                  horizontal: 10,
+                ),
+                child: Text(
+                  categoryName,
+                  style: const TextStyle(
+                    fontSize: 13,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Text(
+                '30 Sept 2024',
+                style: TextStyle(
+                  fontSize: 11,
+                  color: Colors.blueGrey[600],
                 ),
               ),
             ],
