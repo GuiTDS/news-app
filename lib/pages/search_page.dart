@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:inews/components/search_page_components/news_location.dart';
+import 'package:inews/components/search_page_components/trending_list.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
@@ -15,9 +17,10 @@ class SearchPage extends StatelessWidget {
           width: 230,
           height: 30,
           child: TextField(
+            textAlignVertical: TextAlignVertical.top,
             decoration: InputDecoration(
-              labelText: 'Search any news',
-              labelStyle: TextStyle(fontSize: 12, color: Colors.blueGrey[700]),
+              hintText: 'Search any news',
+              hintStyle: TextStyle(fontSize: 12, color: Colors.blueGrey[700]),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(22),
               ),
@@ -26,7 +29,7 @@ class SearchPage extends StatelessWidget {
                 Icons.mic_none_outlined,
               ),
               isDense: true,
-              contentPadding: const EdgeInsets.only(bottom: 5, right: 5),
+              contentPadding: const EdgeInsets.only(right: 5),
             ),
           ),
         ),
@@ -62,122 +65,56 @@ class SearchPage extends StatelessWidget {
             const SizedBox(
               height: 25,
             ),
-            Row(
-              children: [
-                const Text('People'),
-                const SizedBox(
-                  width: 20,
-                ),
-                Expanded(
-                  child: SizedBox(
-                    height: 20,
-                    child: ListView.separated(
-                      padding: const EdgeInsets.only(
-                        left: 10,
-                      ),
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) => const Text('text'),
-                      separatorBuilder: (context, index) => const SizedBox(
-                        width: 10,
-                      ),
-                      itemCount: 15,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            const TrendingList(listTitle: 'People'),
             const SizedBox(
-              height: 25,
+              height: 15,
             ),
-            Row(
-              children: [
-                const Text('Companies'),
-                const SizedBox(
-                  width: 20,
-                ),
-                Expanded(
-                  child: SizedBox(
-                    height: 20,
-                    child: ListView.separated(
-                      padding: const EdgeInsets.only(
-                        left: 10,
-                      ),
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) => const Text('text'),
-                      separatorBuilder: (context, index) => const SizedBox(
-                        width: 10,
-                      ),
-                      itemCount: 15,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            const TrendingList(listTitle: 'Companies'),
             const SizedBox(
-              height: 25,
+              height: 15,
             ),
-            Row(
-              children: [
-                const Text('Event'),
-                const SizedBox(
-                  width: 20,
-                ),
-                Expanded(
-                  child: SizedBox(
-                    height: 20,
-                    child: ListView.separated(
-                      padding: const EdgeInsets.only(
-                        left: 10,
-                      ),
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) => const Text('text'),
-                      separatorBuilder: (context, index) => const SizedBox(
-                        width: 10,
-                      ),
-                      itemCount: 15,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            const TrendingList(listTitle: 'Event'),
             const SizedBox(
-              height: 25,
+              height: 15,
+            ),
+            const TrendingList(listTitle: 'Topics'),
+            const SizedBox(
+              height: 10,
             ),
             Row(
               children: [
-                const Text('Topics'),
-                const SizedBox(
-                  width: 20,
-                ),
-                Expanded(
-                  child: SizedBox(
-                    height: 20,
-                    child: ListView.separated(
-                      padding: const EdgeInsets.only(
-                        left: 10,
-                      ),
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) => const Text('text'),
-                      separatorBuilder: (context, index) => const SizedBox(
-                        width: 10,
-                      ),
-                      itemCount: 15,
-                    ),
+                const Text(
+                  'Show more',
+                  style: TextStyle(
+                    color: Colors.blueGrey,
                   ),
                 ),
-              ],
-            ),
-            Row(
-              children: [
-                const Text('Show more', style: TextStyle(
-                  color: Colors.blueGrey,
-                ),),
                 IconButton(
                   padding: const EdgeInsets.only(right: 10),
-                    onPressed: () => print('clicou'),
-                    icon: const Icon(Icons.keyboard_arrow_down_outlined, color: Colors.blueGrey,)),
+                  onPressed: () => print('clicou'),
+                  icon: const Icon(
+                    Icons.keyboard_arrow_down_outlined,
+                    color: Colors.blueGrey,
+                  ),
+                ),
               ],
-            )
+            ),
+            const SizedBox(height: 20,),
+            const Text('Location', style: TextStyle(
+              fontSize: 16,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),),
+            const SizedBox(
+              height: 20,
+            ),
+            Expanded(
+              child: ListView.separated(
+                  itemBuilder: (context, index) => const NewsLocation(),
+                  separatorBuilder: (context, index) =>
+                      const SizedBox(height: 10),
+                  itemCount: 4),
+            ),
           ],
         ),
       ),
