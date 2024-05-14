@@ -65,19 +65,31 @@ class SearchPage extends StatelessWidget {
             const SizedBox(
               height: 25,
             ),
-            const TrendingList(listTitle: 'People'),
+            TrendingList(
+              listTitle: 'People',
+              topics: topicsList[0],
+            ),
             const SizedBox(
               height: 15,
             ),
-            const TrendingList(listTitle: 'Companies'),
+            TrendingList(
+              listTitle: 'Companies',
+              topics: topicsList[1],
+            ),
             const SizedBox(
               height: 15,
             ),
-            const TrendingList(listTitle: 'Event'),
+            TrendingList(
+              listTitle: 'Event',
+              topics: topicsList[2],
+            ),
             const SizedBox(
               height: 15,
             ),
-            const TrendingList(listTitle: 'Topics'),
+            TrendingList(
+              listTitle: 'Topics',
+              topics: topicsList[3],
+            ),
             const SizedBox(
               height: 10,
             ),
@@ -99,12 +111,17 @@ class SearchPage extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 20,),
-            const Text('Location', style: TextStyle(
-              fontSize: 16,
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-            ),),
+            const SizedBox(
+              height: 20,
+            ),
+            const Text(
+              'Location',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             const SizedBox(
               height: 20,
             ),
@@ -121,3 +138,18 @@ class SearchPage extends StatelessWidget {
     );
   }
 }
+
+List<List<String>> topicsList = [
+  ['trump', 'Joe Bidden', 'Elon Musk', 'Bill Gates', 'Mark'],
+  ['Apple', 'Xiaomi', 'HBO', 'Disney', 'Huawei', 'LG', 'Sony'],
+  ['Valentines Day', 'Apple event', 'Huawei event', 'Facebook event'],
+  [
+    'Baseball',
+    'Basketball',
+    'Football',
+    'Sports',
+    'Health',
+    'Politics',
+    'Food'
+  ],
+];

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:inews/pages/home_page.dart';
-import 'package:inews/pages/profile_page.dart';
 import 'package:inews/pages/search_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -39,7 +38,6 @@ class _MainPageState extends State<MainPage> {
         children: const [
           HomePage(),
           SearchPage(),
-          ProfilePage(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -53,12 +51,6 @@ class _MainPageState extends State<MainPage> {
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.search,
-                color: Colors.black,
-              ),
-              label: ''),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person,
                 color: Colors.black,
               ),
               label: ''),

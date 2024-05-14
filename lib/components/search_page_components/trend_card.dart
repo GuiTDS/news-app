@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TrendCard extends StatelessWidget {
-  const TrendCard({super.key});
+  final String title;
+  const TrendCard({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +18,9 @@ class TrendCard extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(22),
       ),
-      child: const Text(
-        'Trump',
-        style: TextStyle(
+      child: Text(
+        title,
+        style: const TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w500,
           color: Colors.black,
@@ -28,19 +29,3 @@ class TrendCard extends StatelessWidget {
     );
   }
 }
-
-/* const Card(
-      elevation: 1,
-      color: Colors.white,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10),
-        child: Text(
-          'Trump',
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            color: Colors.black,
-          ),
-        ),
-      ),
-    ); */
